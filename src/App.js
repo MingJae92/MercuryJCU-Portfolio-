@@ -22,7 +22,7 @@ function App() {
           Learn React
         </a> */}
 
-        <h1>Mercury JC</h1>
+        <h1>Mercury JC!!!</h1>
       </header>
     </div>
   );
