@@ -15,11 +15,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { BrowserRouter as Router,
-    Route,
-    Routes,
-    Link,
-    useLocation, } from 'react-router';
+
 
 // import Homepage from './routes/Homapage';
 // import MyWork from './routes/MyWork';
@@ -54,8 +50,36 @@ const AppBar = styled(MuiAppBar, {
     justifyContent: 'flex-end',
   }));
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+    const {history} = props;
+    const itemList = [
+        {
+            text: "Home",
+            onClick : ()=> history.push("/Home")
+        },
+        {
+            text: "About Me",
+            onClick : ()=> history.push("/About-Me")
+        },
+        {
+            text: "Commisssions",
+            onClick : ()=> history.push("/Commissions")
+        },
+        {
+            text: "Art-Work",
+            onClick : ()=> history.push("/Art-Work")
+        },
+        {
+            text: "Shop",
+            onClick : ()=> history.push("/Shop")
+        },
+        {
+            text: "Contact-Me",
+            onClick : ()=> history.push("/Contact-Me")
+        },
+           
 
+    ]
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -105,19 +129,21 @@ const Sidebar = () => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {itemList.map((item, index) => {
+            const {text, onClick} = item;
+            return(<ListItem button key={text} onClick={onClick} disablePadding>
               {/* <ListItemButton> */}
                 <ListItemIcon>
                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               {/* </ListItemButton> */}
-            </ListItem>
-          ))}
+            </ListItem>)
+            
+          })}
         </List>
         <Divider />
-        
+            
       </Drawer>
       
     </Box>
