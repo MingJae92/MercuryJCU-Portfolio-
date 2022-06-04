@@ -4,7 +4,7 @@ import './Commissions.css'
 const Commissions = () => {
   return (
     <div>
-      <h1>Commissions</h1>
+      
     </div>
   )
 }
